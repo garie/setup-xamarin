@@ -1,82 +1,82 @@
-name: Validate 'setup-xamarin'
-on:
-  pull_request:
-  schedule:
-    - cron: 0 0 * * *
+# name: Validate 'setup-xamarin'
+# on:
+#   pull_request:
+#   schedule:
+#     - cron: 0 0 * * *
 
-jobs:
-  xamarin-partial-versions:
-    name: xamarin - valid versions
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+# jobs:
+#   xamarin-partial-versions:
+#     name: xamarin - valid versions
+#     runs-on: macos-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: setup-xamarin
-      uses: ./
-      with:
-        mono-version: 6.6
-        xamarin-ios-version: 13.8
-        xamarin-mac-version: 6.6
-        xamarin-android-version: 10.1
+#     - name: setup-xamarin
+#       uses: ./
+#       with:
+#         mono-version: 6.6
+#         xamarin-ios-version: 13.8
+#         xamarin-mac-version: 6.6
+#         xamarin-android-version: 10.1
 
-    - name: Validate versions
-      run: pwsh ./__tests__/validate-xamarin-versions.ps1 "6.6" "13.8" "6.6" "10.1"
+#     - name: Validate versions
+#       run: pwsh ./__tests__/validate-xamarin-versions.ps1 "6.6" "13.8" "6.6" "10.1"
 
-  xamarin-latest-keyword:
-    name: xamarin - latest keyword
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#   xamarin-latest-keyword:
+#     name: xamarin - latest keyword
+#     runs-on: macos-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: setup-xamarin
-      uses: ./
-      with:
-        mono-version: latest
-        xamarin-ios-version: latest
-        xamarin-mac-version: latest
-        xamarin-android-version: latest
+#     - name: setup-xamarin
+#       uses: ./
+#       with:
+#         mono-version: latest
+#         xamarin-ios-version: latest
+#         xamarin-mac-version: latest
+#         xamarin-android-version: latest
 
-  xamarin-full-versions:
-    name: xamarin - valid full versions (should warn)
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#   xamarin-full-versions:
+#     name: xamarin - valid full versions (should warn)
+#     runs-on: macos-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: setup-xamarin
-      uses: ./
-      with:
-        xamarin-ios-version: 13.10.0.21
-        xamarin-mac-version: 6.6.0.12
+#     - name: setup-xamarin
+#       uses: ./
+#       with:
+#         xamarin-ios-version: 13.10.0.21
+#         xamarin-mac-version: 6.6.0.12
 
-    - name: Validate versions
-      run: pwsh ./__tests__/validate-xamarin-versions.ps1 -XamarinIOSVersion "13.10.0.21" -XamarinMacVersion "6.6.0.12"
+#     - name: Validate versions
+#       run: pwsh ./__tests__/validate-xamarin-versions.ps1 -XamarinIOSVersion "13.10.0.21" -XamarinMacVersion "6.6.0.12"
 
-  xcode-full-version:
-    name: xcode - valid version
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#   xcode-full-version:
+#     name: xcode - valid version
+#     runs-on: macos-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: setup-xamarin
-      uses: ./
-      with:
-        xcode-version: 11.4
+#     - name: setup-xamarin
+#       uses: ./
+#       with:
+#         xcode-version: 11.4
 
-    - name: Validate versions
-      run: pwsh ./__tests__/validate-xcode-version.ps1 -XcodeVersion "11.4"
+#     - name: Validate versions
+#       run: pwsh ./__tests__/validate-xcode-version.ps1 -XcodeVersion "11.4"
 
-  xcode-wildcard-version:
-    name: xcode - wildcard version
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#   xcode-wildcard-version:
+#     name: xcode - wildcard version
+#     runs-on: macos-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: setup-xamarin
-      uses: ./
-      with:
-        xcode-version: 11.x
+#     - name: setup-xamarin
+#       uses: ./
+#       with:
+#         xcode-version: 11.x

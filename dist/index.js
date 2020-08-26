@@ -323,9 +323,9 @@ const invokeSelector = (variableName, toolSelector) => {
 };
 const run = () => {
     try {
-        if (process.platform !== "darwin") {
-            throw new Error(`This task is intended only for macOS platform. It can't be run on '${process.platform}' platform`);
-        }
+        // if (process.platform !== "darwin") {
+        //     throw new Error(`This task is intended only for macOS platform. It can't be run on '${process.platform}' platform`);
+        // }
         invokeSelector("mono-version", mono_selector_1.MonoToolSelector);
         invokeSelector("xamarin-ios-version", xamarin_ios_selector_1.XamarinIosToolSelector);
         invokeSelector("xamarin-mac-version", xamarin_mac_selector_1.XamarinMacToolSelector);
